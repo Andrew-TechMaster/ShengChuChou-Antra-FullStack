@@ -1,5 +1,5 @@
 -- Assignment Day 4
---- ¡± Answer following quesions:
+--- Â¡Â± Answer following quesions:
 -- <Q 1>
 /*
 	A view is a virtual table whose contents are defined by a query.
@@ -51,12 +51,12 @@
 	A trigger is a stored procedure that runs automatically when various events happen (eg update, insert, delete).
 */
 
---- ¡± Write queries:
+--- Â¡Â± Write queries:
 USE Northwind
 GO
 -- <Q 1> Lock tables Region, Territories, EmployeeTerritories and Employees. 
 --       Insert following information into the database. In case of an error, no changes should be made to DB.
--- A new region called ¡§Middle Earth¡¨;
+-- A new region called Â¡Â§Middle EarthÂ¡Â¨;
 SELECT	*
 FROM	Region
 
@@ -73,7 +73,7 @@ END CATCH
 SELECT	*
 FROM	Region
 
--- A new territory called ¡§Gondor¡¨, belongs to region ¡§Middle Earth¡¨;
+-- A new territory called Â¡Â§GondorÂ¡Â¨, belongs to region Â¡Â§Middle EarthÂ¡Â¨;
 SELECT	*
 FROM	Territories
 
@@ -90,7 +90,7 @@ END CATCH
 SELECT	*
 FROM	Territories
 
--- A new employee ¡§Aragorn King¡¨ who's territory is ¡§Gondor¡¨.
+-- A new employee Â¡Â§Aragorn KingÂ¡Â¨ who's territory is Â¡Â§GondorÂ¡Â¨.
 SELECT	*
 FROM	EmployeeTerritories
 
@@ -110,12 +110,12 @@ END CATCH
 SELECT	*
 FROM	EmployeeTerritories
 
--- <Q 2> Change territory ¡§Gondor¡¨ to ¡§Arnor¡¨.
+-- <Q 2> Change territory Â¡Â§GondorÂ¡Â¨ to Â¡Â§ArnorÂ¡Â¨.
 UPDATE Territories 
 SET TerritoryDescription = 'Arnor'
 WHERE TerritoryDescription = 'Gondor'
 
--- <Q 3> Delete Region ¡§Middle Earth¡¨. (tip: remove referenced data first)
+-- <Q 3> Delete Region Â¡Â§Middle EarthÂ¡Â¨. (tip: remove referenced data first)
 -- (Caution: do not forget WHERE or you will delete everything.) In case of an error, no changes should be made to DB. Unlock the tables mentioned in question 1.
 
 --DELETE FROM EmployeeTerritories
@@ -133,7 +133,7 @@ WHERE TerritoryDescription = 'Gondor'
 
 
 
--- <Q 4> Create a view named ¡§view_product_order_[your_last_name]¡¨, list all products and total ordered quantity for that product.
+-- <Q 4> Create a view named Â¡Â§view_product_order_[your_last_name]Â¡Â¨, list all products and total ordered quantity for that product.
 IF EXISTS (SELECT 1 from sys.views
 		   WHERE Name = 'view_product_order_Chou')
 DROP VIEW view_product_order_Chou
@@ -194,7 +194,7 @@ EXEC	@Q = sp_product_order_quantity_Chou_return 60
 PRINT   @Q
 
 
--- <Q 6> Create a stored procedure ¡§sp_product_order_city_[your_last_name]¡¨  that accept  
+-- <Q 6> Create a stored procedure Â¡Â§sp_product_order_city_[your_last_name]Â¡Â¨  that accept  
 -- product name as an input and top 5 cities that ordered most that product combined with the total quantity of that product ordered from that city as output.
 
 IF EXISTS (SELECT 1 from sys.views
@@ -235,9 +235,9 @@ EXEC	sp_product_order_city_Chou 'Tofu'
 
 
 -- <Q 7> Lock tables Region, Territories, EmployeeTerritories and Employees. 
--- Create a stored procedure ¡§sp_move_employees_[your_last_name]¡¨ that automatically find all employees in territory ¡§Tory¡¨;
--- if more than 0 found, insert a new territory ¡§Stevens Point¡¨ of region ¡§North¡¨ to the database,
--- and then move those employees to ¡§Stevens Point¡¨.
+-- Create a stored procedure Â¡Â§sp_move_employees_[your_last_name]Â¡Â¨ that automatically find all employees in territory Â¡Â§ToryÂ¡Â¨;
+-- if more than 0 found, insert a new territory Â¡Â§Stevens PointÂ¡Â¨ of region Â¡Â§NorthÂ¡Â¨ to the database,
+-- and then move those employees to Â¡Â§Stevens PointÂ¡Â¨.
 IF EXISTS (SELECT 1 from sys.views
 		   WHERE Name = 'myTempView')
 DROP VIEW myTempView
@@ -290,8 +290,8 @@ END CATCH
 --WHERE  TerritoryDescription = 'Troy'
 
 
--- <Q 8> Create a trigger that when there are more than 100 employees in territory ¡§Stevens Point¡¨, move them back to Troy. 
--- (After test your code,) remove the trigger. Move those employees back to ¡§Troy¡¨, if any. Unlock the tables.
+-- <Q 8> Create a trigger that when there are more than 100 employees in territory Â¡Â§Stevens PointÂ¡Â¨, move them back to Troy. 
+-- (After test your code,) remove the trigger. Move those employees back to Â¡Â§TroyÂ¡Â¨, if any. Unlock the tables.
 CREATE TRIGGER testTrigger
 ON	 Territories
 AFTER INSERT, UPDATE
@@ -386,7 +386,7 @@ BEGIN TRANSACTION
 
 EXEC tempProc
 
--- <Q 10> Create a stored procedure ¡§sp_birthday_employees_[you_last_name]¡¨ that creates a new table ¡§birthday_employees_your_last_name¡¨
+-- <Q 10> Create a stored procedure Â¡Â§sp_birthday_employees_[you_last_name]Â¡Â¨ that creates a new table Â¡Â§birthday_employees_your_last_nameÂ¡Â¨
 -- and fill it with all employees that have a birthday on Feb. (Make a screen shot) drop the table. Employee table should not be affected.
 IF EXISTS (SELECT 1 from sys.procedures
 		   WHERE Name = 'sp_birthday_employees_Chou')
@@ -403,8 +403,8 @@ GO
 EXEC sp_birthday_employees_Chou 2
 
 
--- <Q 11> Create a stored procedure named ¡§sp_your_last_name_1¡¨ that returns all cites that have at least 2 customers who have bought no or only one kind of product. 
--- Create a stored procedure named ¡§sp_your_last_name_2¡¨ that returns the same but using a different approach. (sub-query and no-sub-query).
+-- <Q 11> Create a stored procedure named Â¡Â§sp_your_last_name_1Â¡Â¨ that returns all cites that have at least 2 customers who have bought no or only one kind of product. 
+-- Create a stored procedure named Â¡Â§sp_your_last_name_2Â¡Â¨ that returns the same but using a different approach. (sub-query and no-sub-query).
 -- a
 IF EXISTS (SELECT 1 from sys.procedures
 		   WHERE Name = 'sp_Chou_1')
