@@ -1,0 +1,23 @@
+﻿@model IEnumerable<ApplicationCore.Models.MovieCardResponseModel>;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<hr />
+
+<div class="rounded">
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var movie in Model)
+            {
+                <div class="col-xl-2 col-l-3 col-sm-4">
+                    @*This is comment*@
+                    @*call partial view from here and send the movie info object to partial view*@
+                    <partial name="_MovieCard" model="movie" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

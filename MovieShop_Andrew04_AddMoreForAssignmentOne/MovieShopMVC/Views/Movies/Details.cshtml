@@ -1,0 +1,62 @@
+﻿@model ApplicationCore.Models.MovieDetailModel;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="rounded">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4">
+                <img src="@Model.movie.PosterUrl" alt="Alternate Text" />
+            </div>
+            <div class="col-4">
+                <p>@Model.movie.Title</p>
+                <span class="badge badge-pill badge-success">Rating</span>
+                <p>@Model.movie.Overview</p>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg">Review</button>
+                <button type="button" class="btn btn-secondary btn-lg">Watch Movie</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <h2>Movie Facts</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">@Model.movie.ReleaseDate</li>
+                    <li class="list-group-item">@Model.movie.RunTime</li>
+                    <li class="list-group-item">@Model.movie.Revenue</li>
+                    <li class="list-group-item">@Model.movie.Budget</li>
+                    <li class="list-group-item">Some Icon</li>
+                </ul>
+                <hr />
+                <h2>Trailers</h2>
+                <ul class="list-group">
+                    @{
+                        foreach (var item in Model.trailer.Name)
+                        {
+                            <li class="list-group-item">@item</li>
+                        }
+
+                    }
+                </ul>
+            </div>
+            <div class="col-9">
+                <h2>Cast</h2>
+                <ul class="list-group">
+                    @{
+                        foreach (var item in Model.cast.TmdbUrl)
+                        {
+                            <li class="list-group-item">@item</li>
+                        }
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

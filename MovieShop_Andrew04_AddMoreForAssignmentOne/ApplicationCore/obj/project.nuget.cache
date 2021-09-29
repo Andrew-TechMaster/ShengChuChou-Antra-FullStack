@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "2aaxkXxnqqZWNzw1bsrvVZq6y/A9PC0myZPGltu7aBg5lgHo1J6yILg9xcPLwe+E/hxbpluoZrBMyxziaheiWQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\andre\\Antra\\dotnet\\Project_MovieShop\\Andrew\\MovieShop_Andrew04_AddMoreForAssignmentOne\\ApplicationCore\\ApplicationCore.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\andre\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
