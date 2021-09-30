@@ -1,0 +1,14 @@
+﻿@model ApplicationCore.Models.MovieCardResponseModel
+
+<div class="card mb-4 shadow">
+    <!--localhost/movies/details/232-->
+    <a asp-controller="Movies" asp-action="Details" asp-route-id="@Model.Id">
+        <img src="@Model.PosterUrl" class="img-fluid" alt="@Model.Title" />
+    </a>
+
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">Box Office : @Model.Revenue</p>
+    </div>
+</div>
+

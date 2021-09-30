@@ -1,0 +1,22 @@
+﻿@model IEnumerable<ApplicationCore.Models.MovieCardResponseModel>;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<hr />
+
+@foreach (var item in Model)
+{
+
+    <div>
+        @item.Id
+    </div>
+    <div>
+        <img src="@item.PosterUrl" alt="Alternate Text" />
+    </div>
+    <div>
+        <p>Revenue is: @item.Revenue </p>
+    </div>
+}

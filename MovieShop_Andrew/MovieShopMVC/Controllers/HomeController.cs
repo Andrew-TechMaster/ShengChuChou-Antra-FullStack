@@ -1,4 +1,5 @@
-﻿using Infrastructure.Services;
+﻿using ApplicationCore.ServiceInterfaces;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MovieShopMVC.Models;
@@ -12,19 +13,17 @@ namespace MovieShopMVC.Controllers
 {
     public class HomeController : Controller
     {
-       
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IMovieService _movieService;
+        public HomeController(IMovieService movieService)
         {
-           
+            _movieService = movieService;
         }
 
-        public IActionResult Index()
+
+        public async Task<IActionResult> Index()
         {
-            // it will look inside views folder => folder name with sae name as controller name and look for the view with the same name as action method name
-            // get model data (top 30 revenue)
-            var movieService = new MovieService();
-            var movies = movieService.Get30HighestGrossingMovies();
+            var movies = await _movieService.Get30HighestGrossingMovies();
             return View(movies);
         }
 
@@ -34,10 +33,20 @@ namespace MovieShopMVC.Controllers
         }
 
 
-        public IActionResult Test()
+        public IActionResult Test() // for: localhost/Home/Test
         {
-            return View();
+            return View();  // 會自動呼叫 Views (folder) 裡面的 Test.cshtml (取名需相同)
+            // return View(string XXXX);  // 取名不同時,用overload method,也就是要填參數 string XXXX
         }
+
+        /*
+        public IActionResult Details(int id)
+        {
+            var movieService = new MovieService();
+            var movieDetails = movieService.GetMovieDetails(id);
+            return View(movieDetails);
+        }
+        */
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

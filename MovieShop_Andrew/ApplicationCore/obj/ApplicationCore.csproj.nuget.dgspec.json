@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andre\\Antra\\dotnet\\MovieShop_Andrew\\ApplicationCore\\ApplicationCore.csproj": {}
+    "C:\\Users\\andre\\Antra\\dotnet\\Project_MovieShop\\Andrew\\MovieShop_Andrew05_revise04to05\\ApplicationCore\\ApplicationCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andre\\Antra\\dotnet\\MovieShop_Andrew\\ApplicationCore\\ApplicationCore.csproj": {
+    "C:\\Users\\andre\\Antra\\dotnet\\Project_MovieShop\\Andrew\\MovieShop_Andrew05_revise04to05\\ApplicationCore\\ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andre\\Antra\\dotnet\\MovieShop_Andrew\\ApplicationCore\\ApplicationCore.csproj",
+        "projectUniqueName": "C:\\Users\\andre\\Antra\\dotnet\\Project_MovieShop\\Andrew\\MovieShop_Andrew05_revise04to05\\ApplicationCore\\ApplicationCore.csproj",
         "projectName": "ApplicationCore",
-        "projectPath": "C:\\Users\\andre\\Antra\\dotnet\\MovieShop_Andrew\\ApplicationCore\\ApplicationCore.csproj",
+        "projectPath": "C:\\Users\\andre\\Antra\\dotnet\\Project_MovieShop\\Andrew\\MovieShop_Andrew05_revise04to05\\ApplicationCore\\ApplicationCore.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andre\\Antra\\dotnet\\MovieShop_Andrew\\ApplicationCore\\obj\\",
+        "outputPath": "C:\\Users\\andre\\Antra\\dotnet\\Project_MovieShop\\Andrew\\MovieShop_Andrew05_revise04to05\\ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,6 +43,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

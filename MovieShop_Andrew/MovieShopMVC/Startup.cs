@@ -1,3 +1,6 @@
+using ApplicationCore.ServiceInterfaces;
+using Infrastructure.Data;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,6 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using ApplicationCore.RepositoryInterfaces;
+using Infrastructure.Repositories;
 
 namespace MovieShopMVC
 {
@@ -18,13 +24,27 @@ namespace MovieShopMVC
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; }  // IConfiguration help us to get data from appsettings.json
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        // .NET Core has built in DI support (Important point of Diff of new .NET Core vs old version .NET framework)
+        // old .NET Framework did not had built-in DI
+        // we used with 3rd party libraries, Autofac, Ninject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            //services.AddScoped<IMovieService, MovieNoSQLService>();
+            services.AddScoped<IMovieService, MovieService>();   // we can inject NoSqlService or SqlService here   // controller需要呼叫service
+            services.AddScoped<IMovieRepository, MovieRepository>(); // Inject MovieRepository in IMovieRepository  // service需要呼叫repository
+
+            services.AddDbContext<MovieShopDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MovieShopDbConnection")));
         }
+        // 3 scopes
+        // AddScoped
+        // AddTransient
+        // AddSingleton
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -9,7 +9,9 @@ namespace ApplicationCore.ServiceInterfaces
 {
     public interface IMovieService
     {
-        // Return Models not entities
-        IEnumerable<MovieCardResponseModel> Get30HighestGrossingMovies();
+        // return Models not Entities
+        Task<IEnumerable<MovieCardResponseModel>> Get30HighestGrossingMovies();
+
+        Task<MovieDetailsResponseModel> GetMovieDetails(int id);
     }
 }

@@ -1,0 +1,67 @@
+﻿@model ApplicationCore.Models.MovieDetailsResponseModel;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="rounded">
+    <div class="container-fluid bg-dark text-white">
+        <div class="row"
+             style="background:transparent url( @Model.BackdropUrl ) no-repeat top center">
+            <div class="col-4">
+                <img src="@Model.PosterUrl" alt="Alternate Text" />
+            </div>
+            <div class="col-4">
+                <h1 class="display-4">@Model.Title</h1>
+                <span class="badge badge-pill badge-success">@Model.Rating</span>
+                <p>@Model.Overview</p>
+            </div>
+            <div class="col-4 d-flex align-items-end flex-column">
+                <button type="button" class="btn btn-primary btn-lg btn-block">Review</button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block">Watch Movie</button>
+            </div>
+        </div>
+    </div>
+    @**@
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-3">
+                <h2>Movie Facts</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">Release Date <span class="badge badge-pill badge-primary">@(@Model.ReleaseDate != null ? @Model.ReleaseDate.Value.ToString("MM-dd, yyyy") : "n/a")</span></li>
+                    <li class="list-group-item">Run Time <span class="badge badge-pill badge-primary">@Model.RunTime</span></li>
+                    <li class="list-group-item">Box Office <span class="badge badge-pill badge-primary">@Model.Revenue</span></li>
+                    <li class="list-group-item">Buddget <span class="badge badge-pill badge-primary">@Model.Budget</span></li>
+                    <li class="list-group-item">Some Icon</li>
+                </ul>
+                <hr />
+                <h2>Trailers</h2>
+                <ul class="list-group">
+                    @{
+                        foreach (var item in Model.Trailers)
+                        {
+                            <li class="list-group-item"><a href="@item.TrailerUrl">@item.Name</a></li>
+
+                        }
+
+                    }
+                </ul>
+            </div>
+
+            <div class="col-9">
+                <h2>Cast</h2>
+                <ul class="list-group">
+                    @{
+                        foreach (var item2 in Model.Casts)
+                        {
+                            <li class="list-group-item">@item2.Name</li>
+                        }
+
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
