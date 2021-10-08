@@ -1,0 +1,95 @@
+<div
+  class="bg-image"
+  style="background-image: url({{ movieDetails.backdropUrl }})"
+>
+  <div class="row">
+    <div class="col-4">
+      <img src="{{ movieDetails.posterUrl }}" alt="Alternate Text" />
+    </div>
+    <div class="col-4">
+      <h1 class="display-4">{{ movieDetails.title }}</h1>
+      <span class="badge badge-pill badge-success">{{
+        movieDetails.rating
+      }}</span>
+      <p>{{ movieDetails.overview }}</p>
+    </div>
+    <div class="col-4 d-flex align-items-end flex-column">
+      <button type="button" class="btn btn-primary btn-lg btn-block">
+        Review
+      </button>
+      <button type="button" class="btn btn-secondary btn-lg btn-block">
+        Buy / Watch Movie
+      </button>
+    </div>
+  </div>
+</div>
+>
+
+<hr />
+
+<div class="row mt-4">
+  <div class="col-4 moviefacts">
+    <h5>MOVIE FACTS</h5>
+    <hr />
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <i class="far fa-calendar-alt mr-2"></i>Release Date
+        <span class="badge badge-pill badge-dark"
+          >{{ movieDetails.releaseDate }}.Value.ToShortDateString()</span
+        >
+      </li>
+
+      <li class="list-group-item">
+        <i class="fas fa-hourglass-half mr-2"></i>Run Time
+        <span class="badge badge-pill badge-dark"
+          >{{ movieDetails.runTime }} m</span
+        >
+      </li>
+      <li class="list-group-item">
+        <i class="far fa-money-bill-alt"></i> Box Office
+        <span class="badge badge-pill badge-pill badge-dark">
+          {{ movieDetails.revenue }}
+        </span>
+      </li>
+
+      <li class="list-group-item">
+        <i class="fas fa-dollar-sign mr-2"></i> Budget
+        <span class="badge badge-pill badge-dark">
+          {{ movieDetails.budget }}
+        </span>
+      </li>
+    </ul>
+    <h5>Trailers</h5>
+    <hr />
+    <div *ngFor="let t of movieDetails.trailers">
+      <a href="{{ t.trailerUrl }}" class="text-dark ml-3" target="_blank">
+        {{ t.name }}
+      </a>
+    </div>
+  </div>
+
+  <div class="col-4 offset-1">
+    <h5>CAST</h5>
+
+    <table class="table">
+      <tbody>
+        <div
+          class="col-6 col-lg-3 col-sm-4 col-xl-2"
+          *ngFor="let mc of movieDetails.casts"
+        >
+          <tr>
+            <td>
+              <img
+                src="{{ mc.profilePath }}"
+                class="cast-small-img rounded-circle"
+                alt="@cast.Name"
+              />
+            </td>
+            <td>{{ mc.name }}</td>
+            <td>{{ mc.character }}</td>
+          </tr>
+        </div>
+      </tbody>
+    </table>
+  </div>
+</div>
